@@ -4,7 +4,7 @@ from src.masks import get_mask_card_number, get_mask_account
 
 # фикстура и параметризованный тест для функции get_mask_card_number
 def test_get_mask_card_number(card_number):
-    assert get_mask_card_number(card_number) == "1596 83** **** 5199"
+    assert get_mask_card_number(1596837868705199) == card_number
 
 
 @pytest.mark.parametrize("card_number, expected", [
@@ -24,7 +24,7 @@ def test_get_mask_card_number_different_length(card_number, expected):
 
 # фикстура и параметризированный тест для функции get_mask_account
 def test_get_mask_account(number_valid):
-    assert get_mask_account(number_valid) == "**7890"
+    assert get_mask_account(1234567890) == number_valid
 
 
 @pytest.mark.parametrize("number_valid, expected", [
