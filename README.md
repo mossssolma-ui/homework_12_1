@@ -19,6 +19,16 @@ git clone git@github.com:mossssolma-ui/homework_10_1.git
 ```
 poetry install
 ```
+### Запуск тестов:
+Для запуска тестов используйте команду:
+```
+pytest
+```
+Для генерации HTML-отчета о покрытии кода:
+```
+poetry run pytest --cov=src --cov-report html
+```
+
 3. Реализованные функции:
 
 *В модуле masks.py:*
