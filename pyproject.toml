@@ -24,7 +24,8 @@ pytest-cov = "^7.0.0"
 disallow_untyped_defs = true
 warn_return_any = true
 exclude = [
-    "venv"
+    "venv",
+    "tests",
 ]
 
 [tool.black]
