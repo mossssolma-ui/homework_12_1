@@ -1,5 +1,6 @@
 import pytest
 
+
 # module masks.py
 @pytest.fixture
 def card_number():
