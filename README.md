@@ -19,16 +19,6 @@ git clone git@github.com:mossssolma-ui/homework_10_1.git
 ```
 poetry install
 ```
-### Запуск тестов:
-Для запуска тестов используйте команду:
-```
-pytest
-```
-Для генерации HTML-отчета о покрытии кода:
-```
-poetry run pytest --cov=src --cov-report html
-```
-
 3. Реализованные функции:
 
 *В модуле masks.py:*
@@ -80,7 +70,23 @@ state соответствует указанному значению.
 `[{'id': 594226727, 'state': 'CANCELED', 'date': '2018-09-12T21:27:25.241689'}, {'id': 615064591, 'state': 'CANCELED', 'date': '2018-10-14T08:21:33.419441'}]`
 
 
-5. Документация и ссылки:
+5. Тестирование:
+#### Для запуска тестов используйте команду:
+```
+pytest
+```
+#### Для запуска тестов с генерацией HTML-отчета о покрытии кода:
+```
+poetry run pytest --cov=src --cov-report html
+```
+- текущее покрытие кода: **100%**
+
+#### Для просмотра HTML-отчета введите в консоли:
+```
+start htmlcov/index.html
+```
+
+6. Документация и ссылки:
 + [SKYPRO 1](https://my.sky.pro/student-cabinet/stream-lesson/182802/homework-requirements)
 + [SKYPRO 2](https://my.sky.pro/student-cabinet/stream-lesson/182803/homework-requirements)
 + [SKYPRO 3](https://my.sky.pro/student-cabinet/stream-lesson/182804/homework-requirements)
