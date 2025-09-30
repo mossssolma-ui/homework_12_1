@@ -7,16 +7,25 @@ def mask_account_card(account_card: str) -> str:
     принимает один аргумент — строку, содержащую тип и номер карты или счета. \
     И возвращает строку с замаскированным номером.
     """
-    choice_acc = account_card.split()
-    if choice_acc[0] in "Visa":
-        result = f"{choice_acc[0]} {choice_acc[1]} {get_mask_card_number(int(choice_acc[-1]))}"
-    elif choice_acc[0] in ["Maestro", "MasterCard"]:
-        result = f"{choice_acc[0]} {get_mask_card_number(int(choice_acc[-1]))}"
-    elif choice_acc[0] == "Счет":
-        result = f"{choice_acc[0]} {get_mask_account(int(choice_acc[-1]))}"
-    else:
-        result = "Данные отсутствуют"
+    choice_acc = account_card.strip().split()
+    result = "Данные отсутствуют"
+    if len(choice_acc) < 2:
+        return result
 
+    number_str = choice_acc[-1]
+    try:
+        number = int(number_str)
+    except (ValueError, TypeError):
+        return result
+
+    if choice_acc[0] == "Счет":
+        result = f"Счет {get_mask_account(number)}"
+        return result
+
+    card_name = " ".join(choice_acc[:-1])
+    if card_name in ["Visa", "Maestro", "MasterCard", "Visa Classic", "Visa Platinum", "Visa Gold",]:
+        result = f"{card_name} {get_mask_card_number(number)}"
+        return result
     return result
 
 
@@ -26,6 +35,8 @@ def get_date(date: str) -> str:
     Принимает на вход строку с датой в формате "2024-03-11T02:26:18.671407"
     и возвращает строку с датой в формате "ДД.ММ.ГГГГ" ("11.03.2024").
     """
-    new_date = date.split("-")
-    result = f"{new_date[2][:2]}.{new_date[1]}.{new_date[0]}"
+    result = "Некорректная дата"
+    if len(date) >= 10 and "-" in date and date.count("-") == 2:
+        year, month, day = date.split("-")
+        result = f"{day[:2]}.{month}.{year}"
     return result
