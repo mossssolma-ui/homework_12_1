@@ -8,7 +8,12 @@ def filter_by_currency(transactions: list[dict], currency: str) -> Generator[dic
     где валюта операции соответствует заданной "currency"
     """
     for transaction in transactions:
-        if transaction["operationAmount"]["currency"]["name"] == currency:
+        if (
+            "operationAmount" in transaction
+            and "currency" in transaction["operationAmount"]
+            and "name" in transaction["operationAmount"]["currency"]
+            and transaction["operationAmount"]["currency"]["name"] == currency
+        ):
             yield transaction
 
 
@@ -29,6 +34,7 @@ def card_number_generator(start: int, end: int) -> Generator[str, Any, None]:
     """
     card_number = "0" * 16
     for num in range(start, end + 1):
-        card_number = card_number[: -len(str(num))] + str(num)
-        card_number_format = " ".join(card_number[i: i + 4] for i in range(0, 16, 4))
-        yield card_number_format
+        if start >= 1 and end <= 9999999999999999:
+            card_number = card_number[: -len(str(num))] + str(num)
+            card_number_format = " ".join(card_number[i : i + 4] for i in range(0, 16, 4))
+            yield card_number_format
