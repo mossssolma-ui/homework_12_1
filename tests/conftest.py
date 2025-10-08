@@ -26,3 +26,9 @@ def account_valid():
 @pytest.fixture
 def valid_date():
     return "11.03.2024"
+
+
+# module generators.py
+@pytest.fixture
+def valid_transaction():
+    return "Перевод организации"

@@ -23,7 +23,14 @@ def mask_account_card(account_card: str) -> str:
         return result
 
     card_name = " ".join(choice_acc[:-1])
-    if card_name in ["Visa", "Maestro", "MasterCard", "Visa Classic", "Visa Platinum", "Visa Gold",]:
+    if card_name in [
+        "Visa",
+        "Maestro",
+        "MasterCard",
+        "Visa Classic",
+        "Visa Platinum",
+        "Visa Gold",
+    ]:
         result = f"{card_name} {get_mask_card_number(number)}"
         return result
     return result
