@@ -12,7 +12,7 @@ def load_financial_transactions(file_path: str) -> list[dict]:
     возвращается пустой список.
     """
     try:
-        with open(file_path, 'r', encoding='utf-8') as f:
+        with open(file_path, "r", encoding="utf-8") as f:
             result = json.load(f)
             if isinstance(result, list):
                 return result
@@ -36,20 +36,20 @@ def get_transaction_amount(transaction: dict) -> float:
     Если транзакция была в USD или EUR, происходит вызов
     функции convert_to_rub, которая обращается к внешнему API
     """
-    operation = transaction.get('operationAmount')
+    operation = transaction.get("operationAmount")
 
     if not isinstance(operation, dict):
         return 0.0
 
     amount = float(operation.get("amount", 0))
 
-    cur = operation.get('currency')
+    cur = operation.get("currency")
     if isinstance(cur, dict):
-        cur_code = cur.get('code')
+        cur_code = cur.get("code")
     else:
         return 0.0
 
-    if cur_code == 'RUB':
+    if cur_code == "RUB":
         return amount
     elif cur_code in ["USD", "EUR"]:
         to_rub = convert_to_rub(amount, cur_code)
