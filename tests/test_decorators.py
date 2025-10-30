@@ -1,4 +1,5 @@
 import pytest
+
 from src.decorators import log
 
 
@@ -46,7 +47,7 @@ def test_log():
         return x
 
     assert identity(15) == 15
-    assert identity('test') == 'test'
+    assert identity("test") == "test"
     assert identity([1, 2, 3]) == [1, 2, 3]
 
 
