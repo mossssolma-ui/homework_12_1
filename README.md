@@ -49,6 +49,13 @@ state соответствует указанному значению.
 + Реализован декоратор`log`, который будет автоматически логировать начало и конец выполнения функции, а также ее результаты или возникшие ошибки.
 Декоратор принимает необязательный аргумент `filename`, который определяет, куда будут записываться логи (в файл или в консоль).
 
+*В модуле utils.py:*
++ Реализована функция `load_financial_transactions`, которая принимает на вход путь до JSON-файла и возвращает список словарей с данными о финансовых транзакциях. 
++ Реализована функция `get_transaction_amount`, которая принимает на вход транзакцию и возвращает сумму транзакции (amount) в рублях.
+
+*В модуле external_api.py:*
++ Реализована функция `convert_to_rub`, которая принимает сумму транзакции и валюту (USD, EUR) и обращается к внешнему API для получения текущего курса валют и конвертации суммы операции в рубли.
+
 5. Примеры использования:
 
 + Функция `get_mask_card_number` принимает на вход номер карты и возвращает ее маску. Номер карты замаскирован и отображается в формате 
@@ -187,23 +194,27 @@ poetry run pytest --cov=src --cov-report html
 ```
 текущее покрытие кода:
 ```
-Name                       Stmts   Miss  Cover
-----------------------------------------------
-src\__init__.py                0      0   100%
-src\decorators.py             23      0   100%
-src\generators.py             15      0   100%
-src\masks.py                  15      0   100%
-src\processing.py              6      0   100%
-src\widget.py                 25      0   100%
-tests\__init__.py              0      0   100%
-tests\conftest.py             19      0   100%
-tests\test_decorators.py      41      0   100%
-tests\test_generators.py      19      0   100%
-tests\test_masks.py           17      0   100%
-tests\test_processing.py       8      0   100%
-tests\test_widget.py          23      0   100%
-----------------------------------------------
-TOTAL                        211      0   100%
+Name                         Stmts   Miss  Cover
+------------------------------------------------
+src\__init__.py                  0      0   100%
+src\decorators.py               23      0   100%
+src\external_api.py             23      0   100%
+src\generators.py               15      0   100%
+src\masks.py                    15      0   100%
+src\processing.py                6      0   100%
+src\utils.py                    33      0   100%
+src\widget.py                   25      0   100%
+tests\__init__.py                0      0   100%
+tests\conftest.py               19      0   100%
+tests\test_decorators.py        41      0   100%
+tests\test_external_api.py      35      0   100%
+tests\test_generators.py        19      0   100%
+tests\test_masks.py             17      0   100%
+tests\test_processing.py         8      0   100%
+tests\test_utils.py             64      0   100%
+tests\test_widget.py            23      0   100%
+------------------------------------------------
+TOTAL                          366      0   100%
 ```
 #### Для просмотра HTML-отчета введите в консоли:
 ```
